@@ -11,3 +11,4 @@ Simple Spring Boot application with persistence layer based on Hibernate.
 - Tomcat 8
 - Hibernate 5
 - JPA 2
+

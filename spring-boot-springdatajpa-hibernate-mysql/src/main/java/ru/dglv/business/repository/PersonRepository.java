@@ -8,5 +8,6 @@ import ru.dglv.business.model.Person;
 @Transactional
 public interface PersonRepository extends CrudRepository<Person, Long>
 {
-
+    Iterable<Person> findByName(String name);
+    Person findByUsername(String username);
 }
