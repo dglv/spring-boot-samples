@@ -3,12 +3,14 @@ package ru.dglv.business.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.google.common.collect.ImmutableList;
 
 import ru.dglv.business.model.Person;
 import ru.dglv.business.repository.PersonRepository;
 
+@Service
 public class PersonServiceImpl implements PersonService
 {
     @Autowired
@@ -18,6 +20,15 @@ public class PersonServiceImpl implements PersonService
     public Person savePerson(final Person person)
     {
         return personRepository.save(person);
+    }
+
+    @Override
+    public Person savePerson(final String username, final String password, 
+            final String name, final Integer age)
+    {
+        final Person person = new Person(username, password, name, age);
+
+        return savePerson(person);
     }
 
     @Override

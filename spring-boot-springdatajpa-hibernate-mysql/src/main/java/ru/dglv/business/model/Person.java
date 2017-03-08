@@ -35,6 +35,15 @@ public class Person extends AbstractBaseEntity
         this.guid = UUID.randomUUID().toString();
     }
     
+    public Person(final String username, final String password, final String name, final Integer age)
+    {
+        this.guid = UUID.randomUUID().toString();
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.age = age;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

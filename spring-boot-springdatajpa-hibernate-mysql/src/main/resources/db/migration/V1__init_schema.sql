@@ -6,7 +6,7 @@ CREATE TABLE `person` (
   `age` 	 INT(11)	  DEFAULT NULL,
   `guid`	 VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ukey_username` (`username`)
+  UNIQUE KEY `ukey_username` (`username`),
   UNIQUE KEY `ukey_guid` (`guid`)
 )
   ENGINE = InnoDB
