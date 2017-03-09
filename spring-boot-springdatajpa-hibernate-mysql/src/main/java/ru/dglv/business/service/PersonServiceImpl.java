@@ -2,6 +2,8 @@ package ru.dglv.business.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,18 @@ import ru.dglv.business.repository.PersonRepository;
 @Service
 public class PersonServiceImpl implements PersonService
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonServiceImpl.class);
+
     @Autowired
     private PersonRepository personRepository;
 
     @Override
     public Person savePerson(final Person person)
     {
-        return personRepository.save(person);
+        final Person personFromDb = personRepository.save(person);
+        LOGGER.info("Person {} saved successfully", personFromDb);
+
+        return personFromDb;
     }
 
     @Override
@@ -35,45 +42,68 @@ public class PersonServiceImpl implements PersonService
     public void deletePerson(final Person person)
     {
         personRepository.delete(person);
+        LOGGER.info("Person {} removed successfully", person);
     }
 
     @Override
     public void deletePersonById(final Long id)
     {
         personRepository.delete(id);
+        LOGGER.info("Person with id {} removed successfully", id);
     }
 
     @Override
     public void deleteAllPersons()
     {
         personRepository.deleteAll();
+        LOGGER.info("All persons were removed successfully");
     }
 
     @Override
     public Person getPersonById(final Long id)
     {
-        return personRepository.findOne(id);
+        final Person personFromDb = personRepository.findOne(id);
+        LOGGER.debug("Fetched Person {} by id {}", personFromDb, id);
+
+        return personFromDb;
     }
 
     @Override
     public Person getPersonByUsername(final String username)
     {
-        return personRepository.findByUsername(username);
+        final Person personFromDb = personRepository.findByUsername(username);
+        LOGGER.debug("Fetched Person {} by username {}", personFromDb, username);
+
+        return personFromDb;
     }
-    
+
     @Override
     public List<Person> getPersonsByName(final String name)
     {
         Iterable<Person> iterator = personRepository.findByName(name);
-        
-        return ImmutableList.copyOf(iterator);
+        List<Person> persons = ImmutableList.copyOf(iterator);
+
+        if (LOGGER.isDebugEnabled())
+        {
+            LOGGER.debug("The following persons were fetched by name {}:", name);
+            persons.forEach(person -> LOGGER.debug(person.toString()));
+        }
+
+        return persons;
     }
 
     @Override
     public List<Person> getAllPersons()
     {
         Iterable<Person> iterator = personRepository.findAll();
-        
-        return ImmutableList.copyOf(iterator);
+        List<Person> persons = ImmutableList.copyOf(iterator);
+
+        if (LOGGER.isDebugEnabled())
+        {
+            LOGGER.debug("The following persons were fetched:");
+            persons.forEach(person -> LOGGER.debug(person.toString()));
+        }
+
+        return persons;
     }
 }

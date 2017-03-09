@@ -1,5 +1,7 @@
 package ru.dglv.web.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ import ru.dglv.business.service.PersonService;
 @RequestMapping("/person")
 public class PersonControllerImpl implements PersonController
 {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonControllerImpl.class);
+    
     @Autowired
     private PersonService personService;
 
@@ -20,6 +24,7 @@ public class PersonControllerImpl implements PersonController
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showPersonForm(final ModelAndView modelAndView)
     {
+        LOGGER.debug("GET /person request");
         modelAndView.setViewName("personform");
         
         return modelAndView;
@@ -33,6 +38,7 @@ public class PersonControllerImpl implements PersonController
             @RequestParam(value="age") final Integer age,
             final ModelAndView modelAndView)
     {
+        LOGGER.debug("POST /person/save request");
         personService.savePerson(username, password, name, age);
         
         modelAndView.addObject("username", username);
