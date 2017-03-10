@@ -145,7 +145,7 @@ public class Person extends AbstractBaseEntity
     @Override
     public String toString()
     {
-        return "Person [id:" + id + ", username:" + username + 
+        return "Person[id:" + id + ", username:" + username + 
                 ", password:" + password + ", name:" + name + 
                 ", age:" + age + ", guid:" + guid + "]";
     }
