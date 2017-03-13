@@ -7,7 +7,7 @@ import ru.dglv.business.model.Person;
 public interface PersonService
 {
     Person savePerson(Person person);
-    Person savePerson(String username, String password, String name, Integer age);
+    Person savePerson(String username, String password, String email, String name, Integer age);
     void deletePerson(Person person);
     void deletePersonById(Long id);
     void deleteAllPersons();

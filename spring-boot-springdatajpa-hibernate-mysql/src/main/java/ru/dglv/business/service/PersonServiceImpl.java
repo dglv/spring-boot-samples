@@ -31,9 +31,9 @@ public class PersonServiceImpl implements PersonService
 
     @Override
     public Person savePerson(final String username, final String password, 
-            final String name, final Integer age)
+            final String email, final String name, final Integer age)
     {
-        final Person person = new Person(username, password, name, age);
+        final Person person = new Person(username, password, email, name, age);
 
         return savePerson(person);
     }

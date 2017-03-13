@@ -1,0 +1,1 @@
+ALTER TABLE `person` ADD `email` VARCHAR(100) NOT NULL DEFAULT 'fake@mail.com';

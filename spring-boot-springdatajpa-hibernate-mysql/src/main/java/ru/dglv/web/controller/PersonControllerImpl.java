@@ -25,21 +25,47 @@ public class PersonControllerImpl implements PersonController
     public ModelAndView showPersonForm(final ModelAndView modelAndView)
     {
         LOGGER.debug("GET /person request");
-        modelAndView.setViewName("personform");
+        modelAndView.setViewName("login");
+        
+        return modelAndView;
+    }
+    
+    @Override
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public ModelAndView signup(final ModelAndView modelAndView)
+    {
+        LOGGER.debug("GET /person/signup request");
+        modelAndView.setViewName("signup");
+        
+        return modelAndView;
+    }
+    
+    @Override
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(@RequestParam(value = "username") final String username,
+            @RequestParam(value = "password") final String password,
+            final ModelAndView modelAndView)
+    {
+        LOGGER.debug("POST /person/login request");
+/*        personService.savePerson(username, password, name, age);
+        */
+        modelAndView.addObject("username", username);
+        modelAndView.setViewName("save_success");
         
         return modelAndView;
     }
 
     @Override
-    @RequestMapping(value = "/save", method=RequestMethod.POST)
-    public ModelAndView save(@RequestParam(value="username") final String username, 
-            @RequestParam(value="password") final String password, 
-            @RequestParam(value="name") final String name, 
-            @RequestParam(value="age") final Integer age,
+    @RequestMapping(value = "/person/save", method = RequestMethod.POST)
+    public ModelAndView save(@RequestParam(value = "username") final String username, 
+            @RequestParam(value = "password") final String password,
+            @RequestParam(value = "email") final String email, 
+            @RequestParam(value = "name") final String name, 
+            @RequestParam(value = "age") final Integer age,
             final ModelAndView modelAndView)
     {
         LOGGER.debug("POST /person/save request");
-        personService.savePerson(username, password, name, age);
+        personService.savePerson(username, password, email, name, age);
         
         modelAndView.addObject("username", username);
         modelAndView.setViewName("save_success");

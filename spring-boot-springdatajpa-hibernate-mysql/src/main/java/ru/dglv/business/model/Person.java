@@ -23,6 +23,9 @@ public class Person extends AbstractBaseEntity
 
     @Column(name = "password", nullable = false)
     private String password;
+    
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @Column(name = "name")
     private String name;
@@ -35,11 +38,12 @@ public class Person extends AbstractBaseEntity
         this.guid = UUID.randomUUID().toString();
     }
     
-    public Person(final String username, final String password, final String name, final Integer age)
+    public Person(final String username, final String password, final String email, final String name, final Integer age)
     {
         this.guid = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
+        this.email = email;
         this.name = name;
         this.age = age;
     }
@@ -85,6 +89,16 @@ public class Person extends AbstractBaseEntity
     public void setPassword(final String password)
     {
         this.password = password;
+    }
+    
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(final String email)
+    {
+        this.email = email;
     }
 
     public String getName()
@@ -146,7 +160,7 @@ public class Person extends AbstractBaseEntity
     public String toString()
     {
         return "Person[id:" + id + ", username:" + username + 
-                ", password:" + password + ", name:" + name + 
+                ", password:" + password + ", email:" + email + ", name:" + name + 
                 ", age:" + age + ", guid:" + guid + "]";
     }
 }
