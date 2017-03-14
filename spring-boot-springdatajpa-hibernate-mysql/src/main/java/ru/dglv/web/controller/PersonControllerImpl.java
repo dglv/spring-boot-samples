@@ -19,13 +19,13 @@ public class PersonControllerImpl implements PersonController
     @Autowired
     private PersonService personService;
 
-    @Override
+/*    @Override
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String loginRedirect()
     {
         LOGGER.debug("GET / request");
         return "redirect:/login";
-    }
+    }*/
     
     @Override
     @RequestMapping(value = "/login", method = RequestMethod.GET)

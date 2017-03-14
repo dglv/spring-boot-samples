@@ -61,6 +61,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
 		<!-- Background JSP compilation -->
 		<dependency>
@@ -98,6 +104,21 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<!-- mvn flyway:clean 
+			<plugin>
+    			<groupId>org.flywaydb</groupId>
+    			<artifactId>flyway-maven-plugin</artifactId>
+    			<configuration>
+        			<driver>com.mysql.jdbc.Driver</driver>
+    				<url>jdbc:mysql://localhost:3306</url>
+        			<user>testuser</user>
+        			<password>testuser!</password>
+        			<schemas>
+            			<schema>SPRINGBOOTEX</schema>
+        			</schemas>
+    			</configuration>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>

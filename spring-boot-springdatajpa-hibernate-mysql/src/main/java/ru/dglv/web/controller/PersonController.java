@@ -4,7 +4,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface PersonController
 {
-    String loginRedirect();
+    /*String loginRedirect();*/
     ModelAndView login(ModelAndView modelAndView);
     ModelAndView login(String username, String password, ModelAndView modelAndView);
     ModelAndView signup(ModelAndView modelAndView);
