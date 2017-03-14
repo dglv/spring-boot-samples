@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.dglv.business.service.PersonService;
 
 @Controller
-@RequestMapping("/person")
 public class PersonControllerImpl implements PersonController
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonControllerImpl.class);
@@ -21,10 +20,18 @@ public class PersonControllerImpl implements PersonController
     private PersonService personService;
 
     @Override
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView showPersonForm(final ModelAndView modelAndView)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String loginRedirect()
     {
-        LOGGER.debug("GET /person request");
+        LOGGER.debug("GET / request");
+        return "redirect:/login";
+    }
+    
+    @Override
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(final ModelAndView modelAndView)
+    {
+        LOGGER.debug("GET /login request");
         modelAndView.setViewName("login");
         
         return modelAndView;
@@ -34,7 +41,7 @@ public class PersonControllerImpl implements PersonController
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView signup(final ModelAndView modelAndView)
     {
-        LOGGER.debug("GET /person/signup request");
+        LOGGER.debug("GET /signup request");
         modelAndView.setViewName("signup");
         
         return modelAndView;
@@ -46,7 +53,7 @@ public class PersonControllerImpl implements PersonController
             @RequestParam(value = "password") final String password,
             final ModelAndView modelAndView)
     {
-        LOGGER.debug("POST /person/login request");
+        LOGGER.debug("POST /login request");
 /*        personService.savePerson(username, password, name, age);
         */
         modelAndView.addObject("username", username);
@@ -56,15 +63,15 @@ public class PersonControllerImpl implements PersonController
     }
 
     @Override
-    @RequestMapping(value = "/person/save", method = RequestMethod.POST)
-    public ModelAndView save(@RequestParam(value = "username") final String username, 
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public ModelAndView signup(@RequestParam(value = "username") final String username, 
             @RequestParam(value = "password") final String password,
             @RequestParam(value = "email") final String email, 
             @RequestParam(value = "name") final String name, 
             @RequestParam(value = "age") final Integer age,
             final ModelAndView modelAndView)
     {
-        LOGGER.debug("POST /person/save request");
+        LOGGER.debug("POST /signup request");
         personService.savePerson(username, password, email, name, age);
         
         modelAndView.addObject("username", username);

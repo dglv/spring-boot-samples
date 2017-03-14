@@ -1,9 +1,7 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	background: #3498db;
-	margin: 0 auto 0 auto;
 	width: 100%;
-	/* text-align: center; */
 	margin: 20px 0px 20px 0px;
 }
 
@@ -46,10 +44,10 @@ input[type=text], input[type=password] {
 	border: #2980b9 4px solid;
 }
 
-.form-btn-area {
+ .form-btn-area {
 	width: 100%;
     padding: 0;
-    margin: 10;
+    margin-left: 25px;
 }
 
 .btn {
@@ -70,7 +68,7 @@ input[type=text], input[type=password] {
 	background: #2CC06B;
 }
 
-#loginbtn, #signupbtn {
+#submitbtn {
 	float: left;
 	background: #3498db;
 	width: 40%; 
@@ -79,12 +77,11 @@ input[type=text], input[type=password] {
 	color : white;
 	border-radius : 4px; 
 	border : #2980b9 1px solid; 
-	margin-left: 15px;
 	font-weight: 800;
 	font-size: 0.8em;
 }
 
-#loginbtn:hover {
+#submitbtn:hover {
 	background: #3594D2;
 }
 

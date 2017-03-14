@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- The Signup Form -->
-		<form:form action="person/save" method="post">
+		<form:form action="/signup" method="post">
 			<div class="container">
 				<h1>Signup Form</h1>
 
@@ -32,8 +32,8 @@
 				<input type="text" name="age" placeholder="Age"/>
 			
 				<div class="form-btn-area">
-        			<button type="submit" id="signupbtn" value="Submit">Sign Up</button>
-        			<button type="button" class="btn" onclick="location.href='/person';">Cancel</button>
+        			<button type="submit" id="submitbtn" value="Submit">Sign Up</button>
+        			<button type="button" class="btn" onclick="location.href='/login';">Cancel</button>
       			</div>
     		</div>
   		</form:form>
