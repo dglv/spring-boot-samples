@@ -1,4 +1,5 @@
 ﻿## spring-boot-starter
+
 Simple Spring Boot application aka Hello World.
 
 #### Prerequisites:
