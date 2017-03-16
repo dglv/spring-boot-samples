@@ -10,6 +10,6 @@
 <body>
   	<p>Hello ${username}<p>
   
-	<a href="/login">Go to login page</a>
+	<a href="${pageContext.request.contextPath}/login">Go to login page</a>
 </body>
 </html> 

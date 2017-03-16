@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- The Signup Form -->
-		<form:form action="/signup" method="post">
+		<form:form action="${pageContext.request.contextPath}/signup" method="post">
 			<div class="container">
 				<h1>Signup Form</h1>
 
@@ -33,7 +33,7 @@
 			
 				<div class="form-btn-area">
         			<button type="submit" id="submitbtn" value="Submit">Sign Up</button>
-        			<button type="button" class="btn" onclick="location.href='/login';">Cancel</button>
+        			<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/login';">Cancel</button>
       			</div>
     		</div>
   		</form:form>

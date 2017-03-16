@@ -10,7 +10,7 @@
 </head>
 <body>
 	<!-- The Login Form -->
-	<form:form id="login-form" action="/login" method="post">
+	<form:form id="login-form" action="${pageContext.request.contextPath}/login" method="post">
 		<div class="container">
 			<h1>Dashboard</h1>
 
@@ -24,7 +24,7 @@
 			
 			<div class="form-btn-area">
  				<button type="submit" id="submitbtn" value="Submit">Sign In</button>
-				<button type="button" class="btn" onclick="location.href='/signup';">Sign Up</button>
+				<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/signup';">Sign Up</button>
 			</div>
 		</div>
 	</form:form>

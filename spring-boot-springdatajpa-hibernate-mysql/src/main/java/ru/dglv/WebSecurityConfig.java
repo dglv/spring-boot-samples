@@ -43,21 +43,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception 
     {
-        //auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
         
-        JdbcUserDetailsManager userDetailsService = new JdbcUserDetailsManager();
+/*        JdbcUserDetailsManager userDetailsService = new JdbcUserDetailsManager();
         userDetailsService.setDataSource(datasource);
         PasswordEncoder encoder = new BCryptPasswordEncoder();
  
         auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
-        auth.jdbcAuthentication().dataSource(datasource);
- 
-/*        if(!userDetailsService.userExists("user")) {
-            List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-            authorities.add(new SimpleGrantedAuthority("USER"));
-            User userDetails = new User("user", encoder.encode("password"), authorities);
- 
-            userDetailsService.createUser(userDetails);
-        }*/
+        auth.jdbcAuthentication().dataSource(datasource);*/
     }
 }
