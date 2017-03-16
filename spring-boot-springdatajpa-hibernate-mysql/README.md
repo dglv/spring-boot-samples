@@ -1,6 +1,4 @@
-﻿## spring-boot-springdatajpa-hibernate-mysql
-
-Simple Spring Boot application with persistence layer based on Hibernate.
+﻿Simple Spring Boot application with persistence layer based on Hibernate.
 
 #### Prerequisites:
 - Java 8

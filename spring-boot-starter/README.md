@@ -1,6 +1,4 @@
-﻿## spring-boot-starter
-
-Simple Spring Boot application aka Hello World.
+﻿Simple Spring Boot application aka Hello World.
 
 #### Prerequisites:
 - Java 8
