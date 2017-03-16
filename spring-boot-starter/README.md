@@ -17,9 +17,9 @@ Build and Run:
 
 Preview at:
 
-	http://localhost:8080/starter
+	http://localhost:8080/springboot/starter
 
 
 Live Demo:
 
-> http://www.dglv.ga/starter
+> http://www.dglv.ga/springboot/starter
