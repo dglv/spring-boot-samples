@@ -20,6 +20,6 @@ Preview at:
 	http://localhost:8080/starter
 
 
-Live Demo on Heroku.
+Live Demo:
 
 > http://www.dglv.ga/starter
