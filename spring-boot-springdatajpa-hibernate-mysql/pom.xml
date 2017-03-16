@@ -25,6 +25,7 @@
 	</parent>
 
 	<dependencies>
+		<!-- For unit tests -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -37,7 +38,7 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 
-		<!-- a web application -->
+		<!-- the app is a web application -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
