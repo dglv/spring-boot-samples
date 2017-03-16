@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Spring Boot Starter</h1>
-	<h2>Message: ${message}</h2>
+	<p>Message: ${message}</p>
 </body>
 
 </html>
