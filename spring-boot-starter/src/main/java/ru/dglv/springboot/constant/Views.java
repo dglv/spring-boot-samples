@@ -2,14 +2,18 @@ package ru.dglv.springboot.constant;
 
 public enum Views
 {
-    HWVIEW("hwview", "jsp");
+    HWVIEW("hwview");
     
-    public final String name;
-    public final String suffix;
+    private final String name;
     
-    private Views(final String name, final String suffix)
+    private Views(final String name)
     {
         this.name = name;
-        this.suffix = suffix;
     }
+    
+    public String getName()
+    {
+        return  name;
+    }
+    
 }

@@ -21,6 +21,6 @@ public class HelloWorldControllerImpl implements HelloWorldController
     {
         model.put("message", message);
 
-        return Views.HWVIEW.name;
+        return Views.HWVIEW.getName();
     }
 }
