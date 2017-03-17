@@ -1,4 +1,4 @@
-﻿The application is a RESTful Web Service based on Spring Boot.
+﻿The application is a registration web application based on Spring Boot and Spring Security.
 
 #### Prerequisites:
 - Java 8
@@ -17,9 +17,9 @@ Build and Run:
 
 Preview at:
 
-	http://localhost:8080/springboot/rest
+	http://localhost:8080/springboot/security
 
 
 Live Demo:
 
-> http://www.dglv.ga/springboot/rest
+> http://www.dglv.ga/springboot/security
