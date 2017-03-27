@@ -23,40 +23,47 @@ public class PersonServiceImpl implements PersonService
         tempCache = new ConcurrentHashMap<Long, Person>();
         idGenerator = new AtomicLong();
     }
-    
-    public Person createPerson(final String firstName, final String lastName, final Integer age)
-    {
-        final Long id = idGenerator.incrementAndGet();
-        final Person person = new Person(id, firstName, lastName, age);
-        
-        tempCache.put(id, person);
-        
-        return person;
-    }
 
-    public Person updatePerson(final Long id, final String firstName, 
-            final String lastName, final Integer age)
+    @Override
+    public Person updatePerson(final Person fromWeb)
     {
-        final Person person = tempCache.get(id);
+        Person person = null;
         
-        if (person != null)
+        if (fromWeb.getId() == null)
         {
-            person.setFirstName(firstName);
-            person.setLastName(lastName);
-            person.setAge(age);
-            
-            tempCache.put(id, person);
+            person = new Person();
+            final Long id = idGenerator.incrementAndGet();
+            person.setId(id);
         }
-        
+        else
+        {
+            final Person fromDb = tempCache.get(fromWeb.getId());
+            
+            if (fromDb == null)
+            {
+                throw new IllegalArgumentException("Person with id:" + fromWeb.getId() + " is NOT found");
+            }
+            
+            person = fromDb;
+        }
+
+        person.setFirstName(fromWeb.getFirstName());
+        person.setLastName(fromWeb.getLastName());
+        person.setAge(fromWeb.getAge());
+
+        tempCache.put(person.getId(), person);
+
         return person;
     }
 
-    public Person findPersonById(final Long id)
+    @Override
+    public Person getPersonById(final Long id)
     {
         return tempCache.get(id);
     }
 
-    public List<Person> findPersonByLastName(final String lastName)
+    @Override
+    public List<Person> getPersonsByLastName(final String lastName)
     {
         final List<Person> persons = new ArrayList<Person>();
         
@@ -65,7 +72,7 @@ public class PersonServiceImpl implements PersonService
             for (Entry<Long, Person> nextEntry : tempCache.entrySet())
             {
                 final Person nextPerson = nextEntry.getValue();
-                if (lastName.equals(nextPerson.getLastName()))
+                if (lastName.equalsIgnoreCase(nextPerson.getLastName()))
                 {
                     persons.add(nextPerson);
                 }
@@ -74,10 +81,31 @@ public class PersonServiceImpl implements PersonService
         
         return Collections.unmodifiableList(persons);
     }
+    
+    @Override
+    public List<Person> getAllPersons()
+    {
+        final List<Person> persons = new ArrayList<Person>();
 
+        for (Entry<Long, Person> nextEntry : tempCache.entrySet())
+        {
+            final Person nextPerson = nextEntry.getValue();
+
+            persons.add(nextPerson);
+        }
+
+        return Collections.unmodifiableList(persons);
+    }
+
+    @Override
     public void deletePersonById(final Long id)
     {
         tempCache.remove(id);
     }
-
+    
+    @Override
+    public void deleteAllPersons()
+    {
+        tempCache.clear();
+    }
 }

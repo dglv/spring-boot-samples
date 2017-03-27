@@ -1,23 +1,16 @@
 package ru.dglv.restapp.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import ru.dglv.restapp.business.model.Person;
 
 public interface PersonController
 {
-    Status createPerson(String firstName, String lastName, Integer age);
+    Status updatePerson(Person person);
     
-    Status updatePerson(Long id, String firstName, String lastName, Integer age);
+    List<Person> getPersons(Optional<Long> id, Optional<String> lastName);
     
-    Person getPerson(Long id);
-    
-    List<Person> getPersonsByLastName(String lastName);
-    
-    List<Person> getAllPersons();
-    
-    Status deletePerson(Long id);
-    
-    Status deleteAllPersons();
+    Status deletePersons(Optional<Long> id);
 
 }

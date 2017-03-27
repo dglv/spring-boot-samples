@@ -8,15 +8,6 @@ public class Person
     private String lastName;
     private Integer age;
     
-    public Person(final Long id, final String firstName, 
-            final String lastName, final Integer age)
-    {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-    }
-    
     public Long getId()
     {
         return id;

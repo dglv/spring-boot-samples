@@ -6,13 +6,15 @@ import ru.dglv.restapp.business.model.Person;
 
 public interface PersonService
 {
-    Person createPerson(String firstName, String lastName, Integer age);
+    Person updatePerson(Person fromWeb);
     
-    Person updatePerson(Long id, String firstName, String lastName, Integer age);
+    Person getPersonById(Long id);
     
-    Person findPersonById(Long id);
+    List<Person> getPersonsByLastName(String lastName);
     
-    List<Person> findPersonByLastName(String lastName);
+    List<Person> getAllPersons();
     
     void deletePersonById(Long id);
+    
+    void deleteAllPersons();
 }

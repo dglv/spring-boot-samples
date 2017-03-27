@@ -1,63 +1,92 @@
 package ru.dglv.restapp.web;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import ru.dglv.restapp.business.model.Person;
+import ru.dglv.restapp.business.service.PersonService;
 
-@Controller
+@RestController
+@RequestMapping("/person")
 public class PersonControllerImpl implements PersonController
 {
 
+    @Autowired
+    private PersonService personService;
+    
     @Override
-    public Status createPerson(final String firstName, final String lastName, final Integer age)
+    @RequestMapping(method = RequestMethod.POST)
+    public Status updatePerson(@RequestBody Person person)
     {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Status updatePerson(final Long id, final String firstName, final String lastName, final Integer age)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Person getPerson(final Long id)
-    {
-        // TODO Auto-generated method stub
-        return null;
+        Status status = new Status(Status.CODE.OK);
+        
+        try
+        {
+            personService.updatePerson(person);
+        }
+        catch(final Exception e)
+        {
+            status = new Status(Status.CODE.ERROR, e.getMessage());
+        }
+        
+        return status;
     }
     
     @Override
-    public List<Person> getPersonsByLastName(final String lastName)
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Person> getPersons(@RequestParam(value = "id") final Optional<Long> id,
+            @RequestParam(value = "lastName") final Optional<String> lastName)
     {
-        // TODO Auto-generated method stub
-        return null;
+       List<Person> persons = null;
+        
+       if (id.isPresent())
+       {
+           persons = new ArrayList<Person>();
+           persons.add(personService.getPersonById(id.get()));
+       }
+       else if (lastName.isPresent())
+       {
+           persons = personService.getPersonsByLastName(lastName.get());
+       }
+       else 
+       {
+           persons = personService.getAllPersons();
+       }
+       
+       return persons;
     }
-
 
     @Override
-    public List<Person> getAllPersons()
+    @RequestMapping(method = RequestMethod.DELETE)
+    public Status deletePersons(@RequestParam(value = "id") final Optional<Long> id)
     {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        Status status = new Status(Status.CODE.OK);
 
-    @Override
-    public Status deletePerson(final Long id)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+        try
+        {
 
-    @Override
-    public Status deleteAllPersons()
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
+            if (id.isPresent())
+            {
+                personService.deletePersonById(id.get());
+            }
+            else
+            {
+                personService.deleteAllPersons();
+            }
+        }
+        catch(final Exception e)
+        {
+            status = new Status(Status.CODE.ERROR, e.getMessage());
+        }
 
+        return status;
+    }
 }
