@@ -30,6 +30,19 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- JSTL support for JSP pages -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		
+		<!-- Background JSP compilation -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
 		<!-- the app is a web application -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
