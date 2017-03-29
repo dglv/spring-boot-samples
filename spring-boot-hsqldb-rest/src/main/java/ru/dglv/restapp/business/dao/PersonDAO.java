@@ -6,9 +6,9 @@ import ru.dglv.restapp.business.model.Person;
 
 public interface PersonDAO
 {
-    Person create(Person person);
+    Person create(Person fromWeb);
     
-    Person update(Person person);
+    Person update(Person fromWeb);
     
     Person findPersonById(Long id);
     
