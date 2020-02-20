@@ -5,9 +5,10 @@
 - Maven 3
 
 #### Technologies used:
-- Spring-Boot 1.5
-- Tomcat 8
-- Thymeleaf 2.1
+- Spring 5
+- Spring-Boot 2.2
+- Tomcat 9
+- Thymeleaf 3.0
 
 #### Usage
 
@@ -18,9 +19,4 @@ Build and Run:
 
 Preview at:
 
-	http://localhost:8080/springboot/imageview
-
-
-Live Demo:
-
-> http://www.dglv.ga/springboot/imageview
+	http://localhost:8080/imageview

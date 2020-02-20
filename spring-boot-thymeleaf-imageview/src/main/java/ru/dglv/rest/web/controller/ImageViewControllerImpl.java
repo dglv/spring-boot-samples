@@ -10,24 +10,19 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import ru.dglv.rest.business.service.StorageService;
 import ru.dglv.rest.web.constant.Views;
 
 @Controller
-@RequestMapping("/")
 public class ImageViewControllerImpl implements ImageViewController
 {
     @Autowired
     private StorageService storageService;
     
     @Override
-    @GetMapping()
     public String getAllImages(final Model model) throws IOException
     {
         model.addAttribute("files", storageService
@@ -42,8 +37,6 @@ public class ImageViewControllerImpl implements ImageViewController
     }
 
     @Override
-    @GetMapping("/uploaded/{filename:.+}")
-    @ResponseBody
     public ResponseEntity<Resource> loadImage(@PathVariable final String filename)
     {
         Resource file = storageService.loadAsResource(filename);
